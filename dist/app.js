@@ -19,6 +19,40 @@ function renderFilters() {
     .map((type) => `<button class="chip" type="button" data-type="${esc(type)}" aria-pressed="${selectedType === type}">${esc(type)}</button>`).join("");
 }
 
+function setPageInert(active) {
+  for (const el of document.body.children) {
+    if (el.id === "lightbox") continue;
+    if (active) el.setAttribute("inert", "");
+    else el.removeAttribute("inert");
+  }
+}
+
+function lightboxFocusables() {
+  return [...$("#lightbox").querySelectorAll("button, [href], input, select, textarea, [tabindex]:not([tabindex=\"-1\"])")]
+    .filter((el) => !el.disabled && el.getAttribute("aria-hidden") !== "true");
+}
+
+function trapLightboxFocus(event) {
+  const items = lightboxFocusables();
+  if (!items.length) {
+    event.preventDefault();
+    $("#lightbox-close").focus();
+    return;
+  }
+  const first = items[0];
+  const last = items[items.length - 1];
+  if (event.shiftKey && document.activeElement === first) {
+    event.preventDefault();
+    last.focus();
+  } else if (!event.shiftKey && document.activeElement === last) {
+    event.preventDefault();
+    first.focus();
+  } else if (!items.includes(document.activeElement)) {
+    event.preventDefault();
+    first.focus();
+  }
+}
+
 function openLightbox({ src, alt, title }) {
   const root = $("#lightbox");
   const img = $("#lightbox-image");
@@ -30,6 +64,7 @@ function openLightbox({ src, alt, title }) {
   root.hidden = false;
   document.body.classList.add("lightbox-open");
   root.setAttribute("aria-hidden", "false");
+  setPageInert(true);
   $("#lightbox-close").focus();
 }
 
@@ -39,6 +74,7 @@ function closeLightbox() {
   root.hidden = true;
   document.body.classList.remove("lightbox-open");
   root.setAttribute("aria-hidden", "true");
+  setPageInert(false);
   $("#lightbox-image").removeAttribute("src");
   if (lightboxLastFocus && typeof lightboxLastFocus.focus === "function") lightboxLastFocus.focus();
   lightboxLastFocus = null;
@@ -98,11 +134,18 @@ document.addEventListener("click", (event) => {
 });
 $("#search").addEventListener("input", render);
 document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
-    if (!$("#lightbox").hidden) { event.preventDefault(); closeLightbox(); return; }
-    if (document.activeElement.id === "search") { document.activeElement.value = ""; render(); document.activeElement.blur(); }
+  if (!$("#lightbox").hidden) {
+    if (event.key === "Escape") { event.preventDefault(); closeLightbox(); return; }
+    if (event.key === "Tab") { trapLightboxFocus(event); return; }
   }
-  if (event.key === "/" && !/INPUT|TEXTAREA/.test(document.activeElement.tagName) && $("#lightbox").hidden) { event.preventDefault(); $("#search").focus(); }
+  if (event.key === "Escape" && document.activeElement.id === "search") { document.activeElement.value = ""; render(); document.activeElement.blur(); }
+  if (event.key === "/" && !/INPUT|TEXTAREA/.test(document.activeElement.tagName)) { event.preventDefault(); $("#search").focus(); }
+});
+
+document.addEventListener("focusin", (event) => {
+  const root = $("#lightbox");
+  if (root.hidden || root.contains(event.target)) return;
+  $("#lightbox-close").focus();
 });
 
 fetch("lineups.json")
