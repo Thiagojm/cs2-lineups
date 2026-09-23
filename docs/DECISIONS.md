@@ -18,7 +18,9 @@ Record only choices that guide future work. Prefer stable thematic contracts ove
 - Status: accepted
 - Contract:
   - Lineups live in `dist/lineups.json` as a flat array of objects (`map`, `grenade`, `side`, `area`, `from`, `to`, `title`, `throw`, `description`, `image`, `source`).
-  - `app.js` owns filtering, search (`pt-BR` lowercasing), rendering, and favorites; filter chip orders are hardcoded (`mapOrder`, `typeOrder`).
+  - `app.js` owns filtering, search (`pt-BR` lowercasing), rendering, favorites, and the capture lightbox; filter chip orders are hardcoded (`mapOrder`, `typeOrder`).
+  - Smoke/Flash/Molotov chips always appear; HE appears only when catalog data includes HE.
+  - Capture clicks open an in-page lightbox; CS2Nades source links remain `target="_blank"`.
   - Favorite identity is the lineup `source` URL string in `localStorage` key `cs2-lineups-favorites`.
   - Rendered card HTML escapes every dynamic string.
 - Rationale: One JSON file keeps content editable without a CMS; source URLs are stable identifiers that also deep-link to CS2Nades.

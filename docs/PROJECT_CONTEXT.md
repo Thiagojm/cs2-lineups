@@ -29,4 +29,4 @@ Maps in filter order: Mirage, Dust2, Inferno, Nuke, Ancient, Anubis, Cache. Gren
 - Must be served over HTTP(S); opening `index.html` as a file breaks `fetch("lineups.json")`.
 - Content and images are researched from [CS2Nades](https://cs2nades.gg/); patches can invalidate throws—copy tells users to verify in a practice match.
 - Publish `dist` as the static hosting root with no build command. Live site: https://deep-essence-hjmw.here.now/ (here.now). OpenAI Sites config is legacy only.
-- Current catalog size: 14 lineups (mostly smokes; one Anubis molotov).
+- Current catalog size: 21 lineups (smokes, one Flash per map, one Anubis molotov). Capture clicks open an in-page lightbox.
