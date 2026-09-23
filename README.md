@@ -30,8 +30,8 @@ Abra `http://localhost:8000`. Se o comando `python` não estiver disponível, us
 - `dist/app.js`: busca, filtros, favoritos e cartões;
 - `dist/lineups.json`: conteúdo das fichas e links das fontes;
 - `dist/images/`: capturas;
-- `.openai/hosting.json`: configuração do projeto publicado no Sites.
+- `.openai/hosting.json`: configuração legada do Sites; não é o destino de publicação planejado.
 
 Para Cloudflare Pages ou Vercel, configure como site estático, sem comando de build, com diretório de saída `dist`. O projeto também pode ser publicado em um serviço de hospedagem de arquivos estáticos, como here.now.
 
-Site atual no Sites: [cs2-lineups-rapidas-0923.tjm-plastica.chatgpt.site](https://cs2-lineups-rapidas-0923.tjm-plastica.chatgpt.site/). O acesso e a visibilidade desse site são gerenciados separadamente da visibilidade deste repositório.
+O projeto não será mais publicado pelo Sites. Um novo host estático ainda será escolhido. Commits no GitHub não publicam o site automaticamente.

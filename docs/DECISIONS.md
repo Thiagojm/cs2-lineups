@@ -4,13 +4,13 @@ Record only choices that guide future work. Prefer stable thematic contracts ove
 
 ## Delivery and hosting (2026-09-23)
 
-- Status: accepted
+- Status: accepted; hosting destination pending
 - Contract:
   - Deliver a zero-build static site from `dist/`.
-  - Configure OpenAI Sites with `.openai/hosting.json` pointing `static.directory` to `dist`.
-  - Document alternate static hosts (Cloudflare Pages, Vercel, file hosts) with output directory `dist` and no build command.
+  - Stop using OpenAI Sites. The existing `.openai/hosting.json` is legacy configuration, not the active deployment target.
+  - Choose a different static host before the next publication; use `dist` as the output directory and no build command.
 - Rationale: Content is a small JSON-driven catalog; a build toolchain would add cost without product value.
-- Impact: Change files under `dist/` only; never introduce a required compile step without updating README, hosting config, and agent commands.
+- Impact: Keep site assets under `dist/`; update the README and hosting instructions when the new host is selected. Do not treat GitHub commits as deployment.
 
 ## Client catalog model (2026-09-23)
 

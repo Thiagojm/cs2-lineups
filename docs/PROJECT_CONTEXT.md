@@ -28,5 +28,5 @@ Maps in filter order: Mirage, Dust2, Inferno, Nuke, Ancient, Anubis, Cache. Gren
 - Static site only: HTML, CSS, vanilla JS, JSON. No framework, bundler, or backend.
 - Must be served over HTTP(S); opening `index.html` as a file breaks `fetch("lineups.json")`.
 - Content and images are researched from [CS2Nades](https://cs2nades.gg/); patches can invalidate throws—copy tells users to verify in a practice match.
-- Deploy targets treat `dist` as the publish root (OpenAI Sites via `.openai/hosting.json`; also Cloudflare Pages / Vercel static with no build command).
+- Publish `dist` as the static hosting root with no build command. OpenAI Sites is no longer the intended host; a replacement host has not been chosen.
 - Current catalog size: 14 lineups (mostly smokes; one Anubis molotov).

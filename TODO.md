@@ -3,7 +3,7 @@
 ## Completed
 
 - Shipped static Portuguese CS2 lineup guide: 14 cards, filters, search, favorites, captures under `dist/`.
-- Documented local serve and static deploy paths in `README.md` (OpenAI Sites, Cloudflare Pages, Vercel).
+- Documented local serve and static hosting requirements in `README.md`.
 
 ## In progress
 
@@ -11,6 +11,7 @@
 
 ## Next steps
 
+- Choose a static host other than OpenAI Sites and publish `dist` with no build command when authorized.
 - Expand `lineups.json` / `images/` when adding throws (keep `source` stable if a card should keep existing favorites).
 - After Valve map-pool changes, update intro copy, footer date, `mapOrder`, and catalog entries together.
 
