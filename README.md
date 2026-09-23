@@ -15,7 +15,7 @@ Publicado no [here.now](https://here.now) a partir da pasta `dist/` (site estát
 - busca, filtros por mapa e granada e favoritos salvos no navegador;
 - link da fonte original em cada ficha.
 
-As capturas e as instruções foram pesquisadas no [CS2Nades](https://cs2nades.gg/). Confira cada lançamento em uma partida de treino, pois atualizações do jogo podem alterar o resultado.
+As lineups foram pesquisadas no [CS2Nades](https://cs2nades.gg/); o crédito de cada captura aparece na ficha. Confira cada lançamento em uma partida de treino, pois atualizações do jogo podem alterar o resultado.
 
 ## Executar no computador
 

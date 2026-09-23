@@ -6,10 +6,11 @@
 - Published permanent site on here.now: https://deep-essence-hjmw.here.now/
 - Added Flash filter chip plus 7 Flash lineups (one per Premier map) with CS2Nades sources and captures.
 - Capture images open in an in-page lightbox (Esc, ×, or click outside); source links still open externally.
+- Added the project-local `cs2-lineup-captures` skill and three-panel image composer for future screenshots.
 
 ## In progress
 
-- None.
+- Await user review of the rebuilt Mirage Window smoke composite (position, aim, result; Jumpthrow) before commit.
 
 ## Next steps
 

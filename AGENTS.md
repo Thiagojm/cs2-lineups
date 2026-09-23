@@ -26,6 +26,8 @@ There is no package manager, build step, linter, or test suite in this repositor
 - Shipable assets live only under `dist/`. Edit `index.html`, `styles.css`, `app.js`, `lineups.json`, and `images/` there.
 - UI copy is Portuguese (`lang="pt-BR"`). Keep Portuguese for user-facing strings; keep English for agent memory docs.
 - Favorites persist in `localStorage` under `cs2-lineups-favorites`, keyed by each lineup’s `source` URL.
+- A lineup may use `image` or `images` in `lineups.json`; multiple captures render as a labeled split.
+- Optional `captureCredit` overrides the default `CS2NADES` credit shown on the card.
 - Escape all lineup fields before injecting into HTML (`esc` in `app.js`).
 - Static hosting root is `dist`. Live host is here.now (`deep-essence-hjmw`); `.openai/hosting.json` is legacy. Ignore `.herenow/` and never commit API keys.
 

@@ -15,7 +15,7 @@ Fast Portuguese reference for CS2 grenade lineups on the seven Premier competiti
 
 | Term | Meaning in this project |
 | --- | --- |
-| Lineup | One grenade throw with map, side, area, from→to, throw keys, description, image, and source URL |
+| Lineup | One grenade throw with map, side, area, from→to, throw keys, description, one or more captures, and source URL |
 | Pool / Premier | Active competitive map set; as of Sept 2026 includes Cache instead of Overpass |
 | Captura | Composite screenshot showing stand position, crosshair, and landing result |
 | Throw | Input combo (mouse buttons + movement/keys) needed for the lineup |
@@ -27,6 +27,6 @@ Maps in filter order: Mirage, Dust2, Inferno, Nuke, Ancient, Anubis, Cache. Gren
 
 - Static site only: HTML, CSS, vanilla JS, JSON. No framework, bundler, or backend.
 - Must be served over HTTP(S); opening `index.html` as a file breaks `fetch("lineups.json")`.
-- Content and images are researched from [CS2Nades](https://cs2nades.gg/); patches can invalidate throws—copy tells users to verify in a practice match.
+- Lineup research is attributed to [CS2Nades](https://cs2nades.gg/); capture credit is shown per card. Patches can invalidate throws—copy tells users to verify in a practice match.
 - Publish `dist` as the static hosting root with no build command. Live site: https://deep-essence-hjmw.here.now/ (here.now). OpenAI Sites config is legacy only.
-- Current catalog size: 21 lineups (smokes, one Flash per map, one Anubis molotov). Capture clicks open an in-page lightbox.
+- Current catalog size: 21 lineups (smokes, one Flash per map, one Anubis molotov). Capture clicks open an in-page lightbox; a lineup can include multiple labeled captures.

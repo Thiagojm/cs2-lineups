@@ -17,10 +17,11 @@ Record only choices that guide future work. Prefer stable thematic contracts ove
 
 - Status: accepted
 - Contract:
-  - Lineups live in `dist/lineups.json` as a flat array of objects (`map`, `grenade`, `side`, `area`, `from`, `to`, `title`, `throw`, `description`, `image`, `source`).
+  - Lineups live in `dist/lineups.json` as a flat array of objects (`map`, `grenade`, `side`, `area`, `from`, `to`, `title`, `throw`, `description`, `image` or `images`, optional `captureCredit`, `source`).
   - `app.js` owns filtering, search (`pt-BR` lowercasing), rendering, favorites, and the capture lightbox; filter chip orders are hardcoded (`mapOrder`, `typeOrder`).
   - Smoke/Flash/Molotov chips always appear; HE appears only when catalog data includes HE.
-  - Capture clicks open an in-page lightbox; CS2Nades source links remain `target="_blank"`.
+  - Capture clicks open an in-page lightbox; entries with `images` show a labeled split capture. CS2Nades source links remain `target="_blank"`.
+  - Card capture credit defaults to CS2Nades and can be overridden per lineup with `captureCredit`.
   - Favorite identity is the lineup `source` URL string in `localStorage` key `cs2-lineups-favorites`.
   - Rendered card HTML escapes every dynamic string.
 - Rationale: One JSON file keeps content editable without a CMS; source URLs are stable identifiers that also deep-link to CS2Nades.
@@ -31,7 +32,7 @@ Record only choices that guide future work. Prefer stable thematic contracts ove
 - Status: accepted
 - Contract:
   - Cover the seven-map September 2026 Premier pool, including Cache in place of Overpass.
-  - Attribute captures and lineup research to CS2Nades; keep per-card source links and footer credit.
+  - Attribute lineup research to CS2Nades; identify each capture's credit on its card, and keep per-card source links.
   - Warn that map updates can change throws.
 - Rationale: Players need the live competitive pool and a path back to the original video for verification.
 - Impact: Pool changes require copy updates in `index.html` (intro note, footer date) and catalog edits; do not drop attribution.
