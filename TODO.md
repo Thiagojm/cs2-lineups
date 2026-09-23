@@ -4,6 +4,7 @@
 
 - Shipped static Portuguese CS2 lineup guide: 14 cards, filters, search, favorites, captures under `dist/`.
 - Documented local serve and static hosting requirements in `README.md`.
+- Published permanent site on here.now: https://deep-essence-hjmw.here.now/
 
 ## In progress
 
@@ -11,10 +12,12 @@
 
 ## Next steps
 
-- Choose a static host other than OpenAI Sites and publish `dist` with no build command when authorized.
+- Add a Flash filter tab/chip (Flash lineups still to be created in `lineups.json` + `images/`).
+- Open capture images in-page (lightbox/modal) instead of `target="_blank"` on the card image link.
 - Expand `lineups.json` / `images/` when adding throws (keep `source` stable if a card should keep existing favorites).
 - After Valve map-pool changes, update intro copy, footer date, `mapOrder`, and catalog entries together.
 
 ## Backlog
 
-- No explicit backlog recorded yet. Catalog is smoke-heavy and TR-focused; Flash/HE chips exist in UI with little or no matching data today.
+- Catalog is smoke-heavy and TR-focused; HE chip exists in UI with little or no matching data today.
+- CT-side lineups.

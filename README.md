@@ -2,6 +2,12 @@
 
 Guia rápido, em português, para consultar lineups de granadas nos sete mapas do pool competitivo de CS2 em setembro de 2026.
 
+## Site ao vivo
+
+https://deep-essence-hjmw.here.now/
+
+Publicado no [here.now](https://here.now) a partir da pasta `dist/` (site estático permanente).
+
 ## Conteúdo
 
 - 14 lineups em Mirage, Dust2, Inferno, Nuke, Ancient, Anubis e Cache;
@@ -30,8 +36,6 @@ Abra `http://localhost:8000`. Se o comando `python` não estiver disponível, us
 - `dist/app.js`: busca, filtros, favoritos e cartões;
 - `dist/lineups.json`: conteúdo das fichas e links das fontes;
 - `dist/images/`: capturas;
-- `.openai/hosting.json`: configuração legada do Sites; não é o destino de publicação planejado.
+- `.openai/hosting.json`: configuração legada do Sites; não é o destino de publicação.
 
-Para Cloudflare Pages ou Vercel, configure como site estático, sem comando de build, com diretório de saída `dist`. O projeto também pode ser publicado em um serviço de hospedagem de arquivos estáticos, como here.now.
-
-O projeto não será mais publicado pelo Sites. Um novo host estático ainda será escolhido. Commits no GitHub não publicam o site automaticamente.
+Publicação atual: here.now, slug `deep-essence-hjmw`, raiz `dist/`, sem comando de build. Commits no GitHub não republicam o site automaticamente; um novo publish da pasta `dist/` atualiza a URL acima.

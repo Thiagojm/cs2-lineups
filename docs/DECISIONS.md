@@ -4,13 +4,14 @@ Record only choices that guide future work. Prefer stable thematic contracts ove
 
 ## Delivery and hosting (2026-09-23)
 
-- Status: accepted; hosting destination pending
+- Status: accepted
 - Contract:
   - Deliver a zero-build static site from `dist/`.
-  - Stop using OpenAI Sites. The existing `.openai/hosting.json` is legacy configuration, not the active deployment target.
-  - Choose a different static host before the next publication; use `dist` as the output directory and no build command.
-- Rationale: Content is a small JSON-driven catalog; a build toolchain would add cost without product value.
-- Impact: Keep site assets under `dist/`; update the README and hosting instructions when the new host is selected. Do not treat GitHub commits as deployment.
+  - Publish on here.now (live slug `deep-essence-hjmw`, URL https://deep-essence-hjmw.here.now/). API key lives in `~/.herenow/credentials`; local publish cache in `.herenow/` (gitignored).
+  - Keep `.openai/hosting.json` as legacy only; OpenAI Sites is not the deployment target.
+  - GitHub commits do not auto-deploy; republish `dist/` to update the live site.
+- Rationale: Content is a small JSON-driven catalog; here.now fits zero-build static hosting with a permanent authenticated site.
+- Impact: Keep site assets under `dist/`. After content changes, republish to slug `deep-essence-hjmw`. Never commit credentials or `.herenow/state.json`.
 
 ## Client catalog model (2026-09-23)
 
