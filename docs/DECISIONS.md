@@ -34,6 +34,7 @@ Record only choices that guide future work. Prefer stable thematic contracts ove
 - Contract:
   - Cover the seven-map September 2026 Premier pool, including Cache in place of Overpass.
   - Attribute lineup research to CS2Nades when that is the research source; identify each capture's credit on its card (`captureCredit`, default CS2Nades). HTTP sources keep a per-card video link; local-only captures use a stable non-HTTP `source` id and `captureCredit: PRÓPRIA`.
+  - When replacing an existing card's screenshots with user-owned captures, keep the existing `source` (favorite id) and set `captureCredit: PRÓPRIA`. New own-capture lineups get a new stable local `source` id.
   - Warn that map updates can change throws.
-- Rationale: Players need the live competitive pool and, when available, a path back to the original video for verification.
+- Rationale: Players need the live competitive pool and, when available, a path back to the original video for verification. Keeping `source` on replacements preserves starred favorites.
 - Impact: Pool changes require copy updates in `index.html` (intro note, footer date) and catalog edits; do not invent CS2Nades links for user-owned captures.

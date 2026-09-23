@@ -17,7 +17,7 @@ Serve the static site from `dist` (required so `fetch("lineups.json")` works):
 python -m http.server 8000 --directory dist
 ```
 
-Verified 2026-09-23: local `python -m http.server` against `dist/` returned 200 for `/`, `/lineups.json` (22 items), `/app.js`, and `/styles.css`. Lightbox wheel zoom and drag-to-pan were exercised in Playwright (desktop and ~390×844).
+Verified 2026-09-23: local `python -m http.server` against `dist/` returned 200 for `/`, `/lineups.json` (25 items), `/app.js`, and `/styles.css`. Dust2 local captures (Portas v1/v2, Domínio Fundo, Porta B) and lightbox zoom/pan were exercised in Playwright (desktop and mobile).
 
 There is no package manager, build step, linter, or test suite in this repository.
 

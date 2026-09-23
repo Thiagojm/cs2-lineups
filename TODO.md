@@ -2,19 +2,17 @@
 
 ## Completed
 
-- Shipped static Portuguese CS2 lineup guide with filters, search, favorites, and captures under `dist/`.
+- Shipped static Portuguese CS2 lineup guide with filters, search, favorites, lightbox zoom/pan, and captures under `dist/`.
 - Published permanent site on here.now: https://deep-essence-hjmw.here.now/
-- Added Flash filter chip and Flash lineups with CS2Nades sources and captures (catalog trimmed by user preference; replacements later).
-- Capture images open in an in-page lightbox (Esc, ×, or click outside) with wheel zoom and drag-to-pan; source links still open externally.
-- Added the project-local `cs2-lineup-captures` skill and three-panel image composer for future screenshots.
+- Added `cs2-lineup-captures` skill and three-panel composer; Mirage local smokes/Flash Meio and Dust2 Portas v1/v2, Domínio Fundo, Porta B (catalog 25).
 
 ## In progress
 
-- Await user review of the rebuilt Mirage Window smoke composite (position, aim, result; Jumpthrow) before commit.
+- Await user review of the rebuilt Mirage Window smoke composite (Jumpthrow) before further edits.
 
 ## Next steps
 
-- Expand `lineups.json` / `images/` when adding throws (keep `source` stable if a card should keep existing favorites).
+- Expand `lineups.json` / `images/` when adding throws (keep `source` stable on replacements so favorites persist).
 - After Valve map-pool changes, update intro copy, footer date, `mapOrder`, and catalog entries together.
 - Republish `dist/` to here.now slug `deep-essence-hjmw` after content or UI changes.
 
