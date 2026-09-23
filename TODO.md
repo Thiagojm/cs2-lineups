@@ -4,7 +4,7 @@
 
 - Shipped static Portuguese CS2 lineup guide with filters, search, favorites, and captures under `dist/`.
 - Published permanent site on here.now: https://deep-essence-hjmw.here.now/
-- Added Flash filter chip plus 7 Flash lineups (one per Premier map) with CS2Nades sources and captures.
+- Added Flash filter chip and Flash lineups with CS2Nades sources and captures (catalog trimmed by user preference; replacements later).
 - Capture images open in an in-page lightbox (Esc, ×, or click outside) with wheel zoom and drag-to-pan; source links still open externally.
 - Added the project-local `cs2-lineup-captures` skill and three-panel image composer for future screenshots.
 
@@ -20,5 +20,5 @@
 
 ## Backlog
 
-- More Flash coverage beyond one per map; HE chip stays hidden until HE entries exist.
+- Replace removed throws (Mirage Flash Short, Dust2 Flash Long, Nuke Heaven A smoke, Ancient B Long smoke, Anubis Flash Bomb A) and expand Flash/HE; HE chip stays hidden until HE entries exist.
 - CT-side lineups.
