@@ -21,11 +21,12 @@ Record only choices that guide future work. Prefer stable thematic contracts ove
   - `app.js` owns filtering, search (`pt-BR` lowercasing), rendering, favorites, and the capture lightbox; filter chip orders are hardcoded (`mapOrder`, `typeOrder`).
   - Smoke/Flash/Molotov chips always appear; HE appears only when catalog data includes HE.
   - Capture clicks open an in-page lightbox; entries with `images` show a labeled split capture. CS2Nades source links remain `target="_blank"`.
+  - Lightbox zoom uses mouse wheel (about 1×–4×, cursor-centered) and pointer drag to pan when zoomed; open/close resets transform. Focus trap and Esc/×/backdrop close stay unchanged.
   - Card capture credit defaults to CS2Nades and can be overridden per lineup with `captureCredit`.
   - Favorite identity is the lineup `source` URL string in `localStorage` key `cs2-lineups-favorites`.
   - Rendered card HTML escapes every dynamic string.
-- Rationale: One JSON file keeps content editable without a CMS; source URLs are stable identifiers that also deep-link to CS2Nades.
-- Impact: New lineups are data + image additions. Renaming or replacing a `source` orphans existing favorites. Keep Portuguese UI strings in HTML/JS.
+- Rationale: One JSON file keeps content editable without a CMS; source URLs are stable identifiers that also deep-link to CS2Nades. Zoom/pan helps read crosshair detail without leaving the page.
+- Impact: New lineups are data + image additions. Renaming or replacing a `source` orphans existing favorites. Keep Portuguese UI strings in HTML/JS. Lightbox zoom state lives only in memory for the open dialog.
 
 ## Content and attribution (2026-09-23)
 

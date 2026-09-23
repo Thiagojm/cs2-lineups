@@ -5,7 +5,7 @@
 - Shipped static Portuguese CS2 lineup guide with filters, search, favorites, and captures under `dist/`.
 - Published permanent site on here.now: https://deep-essence-hjmw.here.now/
 - Added Flash filter chip plus 7 Flash lineups (one per Premier map) with CS2Nades sources and captures.
-- Capture images open in an in-page lightbox (Esc, ×, or click outside); source links still open externally.
+- Capture images open in an in-page lightbox (Esc, ×, or click outside) with wheel zoom and drag-to-pan; source links still open externally.
 - Added the project-local `cs2-lineup-captures` skill and three-panel image composer for future screenshots.
 
 ## In progress
