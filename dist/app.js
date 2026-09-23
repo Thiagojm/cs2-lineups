@@ -129,7 +129,7 @@ function render() {
         <p class="card-meta"><span>${esc(item.side)}</span><span>${esc(item.area)}</span><span>${esc(item.from)} → ${esc(item.to)}</span></p>
         <p class="card-description">${esc(item.description)}</p>
         <div class="throw-info"><span>LANÇAMENTO</span><strong>${esc(item.throw)}</strong></div>
-        <div class="card-footer"><span>CAPTURA · ${esc(item.captureCredit || "CS2NADES")}</span><a href="${esc(item.source)}" target="_blank" rel="noopener noreferrer" aria-label="Ver fonte e vídeo de ${esc(item.title)}">Ver fonte e vídeo ↗</a></div>
+        <div class="card-footer"><span>CAPTURA · ${esc(item.captureCredit || "CS2NADES")}</span>${/^https?:\/\//i.test(item.source) ? `<a href="${esc(item.source)}" target="_blank" rel="noopener noreferrer" aria-label="Ver fonte e vídeo de ${esc(item.title)}">Ver fonte e vídeo ↗</a>` : `<span>ID · ${esc(item.source)}</span>`}</div>
       </div>
     </article>`;
   }).join("");
