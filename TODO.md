@@ -2,7 +2,7 @@
 
 ## Completed
 
-- Shipped static Portuguese CS2 lineup guide with filters, search, favorites, lightbox zoom/pan, side filter, and captures under `dist/`.
+- Shipped static Portuguese CS2 lineup guide with filters, search, favorites, lightbox wheel/pinch zoom and pan, side filter, and captures under `dist/`.
 - Published permanent site on here.now: https://deep-essence-hjmw.here.now/
 - Added `cs2-lineup-captures` skill and three-panel composer; Mirage local smokes/Flash Meio and Dust2 Portas v1/v2, Domínio Fundo, Porta B, Meio B, plus Dust2 flashes Redomínio Fundo, Rush Fundo, Meio, Varanda, Domínio Varanda (catalog 31).
 

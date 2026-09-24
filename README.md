@@ -11,7 +11,7 @@ Publicado no [here.now](https://here.now) a partir da pasta `dist/` (site estát
 ## Conteúdo
 
 - 31 lineups (smoke, flash e molotov) em Mirage, Dust2, Inferno, Nuke, Ancient, Anubis e Cache;
-- captura da posição, mira e resultado para cada lineup, com visualização ampliada na mesma página;
+- captura da posição, mira e resultado para cada lineup, com zoom por pinça no celular;
 - busca, filtros por mapa, granada e lado (TR/CT) e favoritos salvos no navegador;
 - link da fonte original em cada ficha.
 

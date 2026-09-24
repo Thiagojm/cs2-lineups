@@ -15,6 +15,8 @@ let lightboxTx = 0;
 let lightboxTy = 0;
 let lightboxPanning = false;
 let lightboxPanOrigin = null;
+const lightboxTouches = new Map();
+let lightboxPinchOrigin = null;
 let saved;
 try { saved = new Set(JSON.parse(localStorage.getItem("cs2-lineups-favorites") || "[]")); }
 catch { saved = new Set(); }
@@ -34,6 +36,8 @@ function resetLightboxZoom() {
   lightboxTy = 0;
   lightboxPanning = false;
   lightboxPanOrigin = null;
+  lightboxTouches.clear();
+  lightboxPinchOrigin = null;
   applyLightboxZoom();
 }
 
@@ -220,16 +224,62 @@ $("#lightbox").addEventListener("wheel", (event) => {
 }, { passive: false });
 
 $("#lightbox-images").addEventListener("pointerdown", (event) => {
-  if ($("#lightbox").hidden || lightboxScale <= ZOOM_MIN + 1e-6) return;
+  if ($("#lightbox").hidden) return;
   if (event.button !== 0) return;
+  const el = $("#lightbox-images");
+  if (event.pointerType === "touch") {
+    if (lightboxTouches.size >= 2) return;
+    lightboxTouches.set(event.pointerId, { x: event.clientX, y: event.clientY });
+    el.setPointerCapture(event.pointerId);
+    if (lightboxTouches.size === 2) {
+      const [a, b] = [...lightboxTouches.values()];
+      const rect = el.getBoundingClientRect();
+      lightboxPinchOrigin = {
+        x: (a.x + b.x) / 2, y: (a.y + b.y) / 2,
+        distance: Math.max(1, Math.hypot(a.x - b.x, a.y - b.y)),
+        scale: lightboxScale, tx: lightboxTx, ty: lightboxTy,
+        cx: rect.left + rect.width / 2 - lightboxTx,
+        cy: rect.top + rect.height / 2 - lightboxTy
+      };
+      lightboxPanning = false;
+      lightboxPanOrigin = null;
+    } else if (lightboxScale > ZOOM_MIN + 1e-6) {
+      lightboxPanning = true;
+      lightboxPanOrigin = { x: event.clientX, y: event.clientY, tx: lightboxTx, ty: lightboxTy };
+    }
+    applyLightboxZoom();
+    event.preventDefault();
+    return;
+  }
+  if (lightboxScale <= ZOOM_MIN + 1e-6) return;
   lightboxPanning = true;
   lightboxPanOrigin = { x: event.clientX, y: event.clientY, tx: lightboxTx, ty: lightboxTy };
-  $("#lightbox-images").setPointerCapture(event.pointerId);
+  el.setPointerCapture(event.pointerId);
   applyLightboxZoom();
   event.preventDefault();
 });
 
 $("#lightbox-images").addEventListener("pointermove", (event) => {
+  if (event.pointerType === "touch") {
+    if (!lightboxTouches.has(event.pointerId)) return;
+    lightboxTouches.set(event.pointerId, { x: event.clientX, y: event.clientY });
+    if (lightboxPinchOrigin && lightboxTouches.size === 2) {
+      const [a, b] = [...lightboxTouches.values()];
+      const origin = lightboxPinchOrigin;
+      const scale = Math.min(ZOOM_MAX, Math.max(ZOOM_MIN, origin.scale * Math.hypot(a.x - b.x, a.y - b.y) / origin.distance));
+      const factor = scale / origin.scale;
+      lightboxScale = scale;
+      lightboxTx = origin.tx + (a.x + b.x) / 2 - origin.x + (1 - factor) * (origin.x - origin.cx - origin.tx);
+      lightboxTy = origin.ty + (a.y + b.y) / 2 - origin.y + (1 - factor) * (origin.y - origin.cy - origin.ty);
+      if (scale <= ZOOM_MIN + 1e-6) { lightboxTx = 0; lightboxTy = 0; }
+      applyLightboxZoom();
+    } else if (lightboxPanning && lightboxPanOrigin) {
+      lightboxTx = lightboxPanOrigin.tx + event.clientX - lightboxPanOrigin.x;
+      lightboxTy = lightboxPanOrigin.ty + event.clientY - lightboxPanOrigin.y;
+      applyLightboxZoom();
+    }
+    return;
+  }
   if (!lightboxPanning || !lightboxPanOrigin) return;
   lightboxTx = lightboxPanOrigin.tx + (event.clientX - lightboxPanOrigin.x);
   lightboxTy = lightboxPanOrigin.ty + (event.clientY - lightboxPanOrigin.y);
@@ -237,9 +287,17 @@ $("#lightbox-images").addEventListener("pointermove", (event) => {
 });
 
 function endLightboxPan(event) {
-  if (!lightboxPanning) return;
-  lightboxPanning = false;
-  lightboxPanOrigin = null;
+  if (event.pointerType === "touch") {
+    if (!lightboxTouches.delete(event.pointerId)) return;
+    lightboxPinchOrigin = null;
+    const remaining = [...lightboxTouches.values()][0];
+    lightboxPanning = !!remaining && lightboxScale > ZOOM_MIN + 1e-6;
+    lightboxPanOrigin = lightboxPanning ? { x: remaining.x, y: remaining.y, tx: lightboxTx, ty: lightboxTy } : null;
+  } else if (!lightboxPanning) return;
+  else {
+    lightboxPanning = false;
+    lightboxPanOrigin = null;
+  }
   if (event && $("#lightbox-images").hasPointerCapture?.(event.pointerId)) {
     $("#lightbox-images").releasePointerCapture(event.pointerId);
   }

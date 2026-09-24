@@ -1,2 +1,3 @@
 .herenow/
 .playwright-mcp/
+__pycache__/

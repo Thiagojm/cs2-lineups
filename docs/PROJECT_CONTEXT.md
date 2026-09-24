@@ -8,7 +8,7 @@ Fast Portuguese reference for CS2 grenade lineups on the seven Premier competiti
 
 1. Open the static page → client loads `lineups.json` → cards and filter chips render.
 2. Narrow results with map chips, grenade chips, side chips (TR/CT; TR selected on load), text search (`/` focuses search; Escape clears), or favorites-only toggle.
-3. Open a capture full-size (wheel zoom, drag to pan when zoomed), read throw meta, or follow `source` for the full video.
+3. Open a capture full-size (wheel or two-finger pinch zoom, drag to pan when zoomed), read throw meta, or follow `source` for the full video.
 4. Toggle ♥ on a card → id stored in `localStorage` by `source` URL.
 
 ## Domain terms
