@@ -21,12 +21,12 @@ Record only choices that guide future work. Prefer stable thematic contracts ove
   - `app.js` owns filtering, search (`pt-BR` lowercasing), rendering, favorites, and the capture lightbox; filter chip orders are hardcoded (`mapOrder`, `typeOrder`, `sideOrder`).
   - Side filter chips are `TR` and `CT`; `selectedSide` defaults to `TR` and is page state only (not in `localStorage`). Cards match `item.side === selectedSide`. When CT is selected and the loaded catalog has no CT entries, the empty state explains that CT lineups have not been added yet; other zero-result combinations use the generic no-results message.
   - Smoke/Flash/Molotov chips always appear; HE appears only when catalog data includes HE.
-  - Capture clicks open an in-page lightbox; entries with `images` show a labeled split capture. HTTP(S) source links remain `target="_blank"`.
+  - Capture clicks open an in-page lightbox; entries with `images` show a labeled split capture. Available CS2Nades video links remain `target="_blank"`.
   - Lightbox zoom uses mouse wheel or two-finger pinch (about 1×–4×, pointer-centered) and pointer drag to pan when zoomed; open/close resets transform. Focus trap and Esc/×/backdrop close stay unchanged.
   - Card capture credit defaults to CS2Nades and can be overridden per lineup with `captureCredit`.
-  - Favorite identity is the lineup `source` string in `localStorage` key `cs2-lineups-favorites`. `source` may be an HTTP(S) URL or a stable local id (e.g. `mirage-smoke-l`); non-HTTP sources render `ID · …` in the footer instead of “Ver fonte e vídeo”.
+  - Favorite identity is the lineup `source` string in `localStorage` key `cs2-lineups-favorites`. `source` may be an HTTP(S) URL or a stable local id (e.g. `mirage-smoke-l`); own captures show neither a video link nor an internal ID in the footer, even when an old URL is retained as the favorite key.
   - Rendered card HTML escapes every dynamic string.
-- Rationale: One JSON file keeps content editable without a CMS; source values are stable favorite keys, and HTTP sources also deep-link to CS2Nades. Local ids cover user-owned captures without inventing external URLs. Zoom/pan helps read crosshair detail without leaving the page.
+- Rationale: One JSON file keeps content editable without a CMS; source values are stable favorite keys, and CS2Nades cards with HTTP sources deep-link to their videos. Local ids cover user-owned captures without inventing external URLs. Zoom/pan helps read crosshair detail without leaving the page.
 - Impact: New lineups are data + image additions. Renaming or replacing a `source` orphans existing favorites. Keep Portuguese UI strings in HTML/JS. Lightbox zoom state lives only in memory for the open dialog.
 
 ## Content and attribution (2026-09-23)
@@ -34,7 +34,7 @@ Record only choices that guide future work. Prefer stable thematic contracts ove
 - Status: accepted
 - Contract:
   - Cover the seven-map September 2026 Premier pool, including Cache in place of Overpass.
-  - Attribute lineup research to CS2Nades when that is the research source; identify each capture's credit on its card (`captureCredit`, default CS2Nades). HTTP sources keep a per-card video link; local-only captures use a stable non-HTTP `source` id and `captureCredit: PRÓPRIA`.
+  - Attribute lineup research to CS2Nades when that is the research source; identify each capture's credit on its card (`captureCredit`, default CS2Nades). Only CS2Nades cards with HTTP sources show a video link.
   - When replacing an existing card's screenshots with user-owned captures, keep the existing `source` (favorite id) and set `captureCredit: PRÓPRIA`. New own-capture lineups get a new stable local `source` id.
   - Warn that map updates can change throws.
 - Rationale: Players need the live competitive pool and, when available, a path back to the original video for verification. Keeping `source` on replacements preserves starred favorites.

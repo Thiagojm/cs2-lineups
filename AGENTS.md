@@ -26,10 +26,10 @@ There is no package manager, build step, linter, or test suite in this repositor
 
 - Shipable assets live only under `dist/`. Edit `index.html`, `styles.css`, `app.js`, `lineups.json`, and `images/` there.
 - UI copy is Portuguese (`lang="pt-BR"`). Keep Portuguese for user-facing strings; keep English for agent memory docs.
-- Favorites persist in `localStorage` under `cs2-lineups-favorites`, keyed by each lineup’s `source` URL.
+- Favorites persist in `localStorage` under `cs2-lineups-favorites`, keyed by each lineup’s `source` value (URL or local id).
 - A lineup may use `image` or `images` in `lineups.json`; multiple captures render as a labeled split.
 - Capture clicks open `#lightbox`; wheel or two-finger pinch zooms `#lightbox-images` (~1×–4×), drag pans when zoomed, open/close resets transform; Esc/×/backdrop close and focus trap stay required.
-- Optional `captureCredit` overrides the default `CS2NADES` credit shown on the card.
+- Optional `captureCredit` overrides the default `CS2NADES` credit shown on the card. Own captures (`PRÓPRIA`) show no video link or internal ID in the footer; preserve `source` on replacements to keep favorites.
 - Escape all lineup fields before injecting into HTML (`esc` in `app.js`).
 - Static hosting root is `dist`. Live host is here.now (`deep-essence-hjmw`); `.openai/hosting.json` is legacy. Ignore `.herenow/` and never commit API keys. On this Windows host, republish with PowerShell against the here.now API (bash/`jq` unavailable).
 

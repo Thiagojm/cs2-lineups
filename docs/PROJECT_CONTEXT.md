@@ -2,20 +2,20 @@
 
 ## Purpose
 
-Fast Portuguese reference for CS2 grenade lineups on the seven Premier competitive maps (September 2026 pool). Players filter by map or grenade, read throw instructions with a capture of position/aim/result, open the original CS2Nades source/video, and star favorites in the browser.
+Fast Portuguese reference for CS2 grenade lineups on the seven Premier competitive maps (September 2026 pool). Players filter by map or grenade, read throw instructions with a capture of position/aim/result, open a CS2Nades video when available, and star favorites in the browser.
 
 ## Main flows
 
 1. Open the static page → client loads `lineups.json` → cards and filter chips render.
 2. Narrow results with map chips, grenade chips, side chips (TR/CT; TR selected on load), text search (`/` focuses search; Escape clears), or favorites-only toggle.
-3. Open a capture full-size (wheel or two-finger pinch zoom, drag to pan when zoomed), read throw meta, or follow `source` for the full video.
-4. Toggle ♥ on a card → id stored in `localStorage` by `source` URL.
+3. Open a capture full-size (wheel or two-finger pinch zoom, drag to pan when zoomed), read throw meta, or follow a CS2Nades link when available.
+4. Toggle ♥ on a card → id stored in `localStorage` by the `source` value.
 
 ## Domain terms
 
 | Term | Meaning in this project |
 | --- | --- |
-| Lineup | One grenade throw with map, side, area, from→to, throw keys, description, one or more captures, and source URL |
+| Lineup | One grenade throw with map, side, area, from→to, throw keys, description, one or more captures, and a stable `source` value |
 | Pool / Premier | Active competitive map set; as of Sept 2026 includes Cache instead of Overpass |
 | Captura | Composite screenshot showing stand position, crosshair, and landing result |
 | Throw | Input combo (mouse buttons + movement/keys) needed for the lineup |
@@ -27,6 +27,6 @@ Maps in filter order: Mirage, Dust2, Inferno, Nuke, Ancient, Anubis, Cache. Gren
 
 - Static site only: HTML, CSS, vanilla JS, JSON. No framework, bundler, or backend.
 - Must be served over HTTP(S); opening `index.html` as a file breaks `fetch("lineups.json")`.
-- Lineup research is attributed to [CS2Nades](https://cs2nades.gg/); capture credit is shown per card. Patches can invalidate throws—copy tells users to verify in a practice match.
+- CS2Nades research is attributed when used; capture credit is shown per card. Patches can invalidate throws—copy tells users to verify in a practice match.
 - Publish `dist` as the static hosting root with no build command. Live site: https://deep-essence-hjmw.here.now/ (here.now). OpenAI Sites config is legacy only.
-- Current catalog size: 38 lineups (all TR). Own captures (`captureCredit: PRÓPRIA`) cover Mirage smokes L/CT/Cabecinha/Jungle CT/Janela B, Mirage Flash Meio, Dust2 Portas do meio (replaced CS2Nades composite; source kept), Portas do meio v2, Domínio Fundo, Porta B, Meio B, and Dust2 flashes Redomínio Fundo, Rush Fundo, Meio, Varanda, and Domínio Varanda, plus Inferno smokes Caixões, CT B, Rush Mid, Moto, Moto v2, Lurk Apartamento, Xuxa and NIP Meio falso; Inferno Banana Flash, plus flashes on Nuke/Ancient/Cache; and one Anubis molotov. Capture clicks open an in-page lightbox with wheel zoom and drag-to-pan; a lineup can include multiple labeled captures. Local-only `source` values (no `http`) keep favorites working and show `ID · …` in the card footer instead of an external video link.
+- Current catalog size: 38 lineups (all TR). Own captures (`captureCredit: PRÓPRIA`) cover Mirage smokes Janela do meio/L/CT/Cabecinha/Jungle CT/Janela B, Mirage Flash Meio, Dust2 Portas do meio (replaced CS2Nades composite; source kept), Portas do meio v2, Domínio Fundo, Porta B, Meio B, and Dust2 flashes Redomínio Fundo, Rush Fundo, Meio, Varanda, and Domínio Varanda, plus Inferno smokes Caixões, CT B, Rush Mid, Moto, Moto v2, Lurk Apartamento, Xuxa and NIP Meio falso, Inferno Banana Flash, and Inferno Molotov Tripla. CS2Nades captures include flashes on Nuke/Ancient/Cache and an Anubis molotov. Capture clicks open an in-page lightbox with wheel zoom and drag-to-pan; a lineup can include multiple labeled captures. The `source` value remains the favorite key; own captures show no external video link or internal ID in the card footer.

@@ -13,9 +13,9 @@ Publicado no [here.now](https://here.now) a partir da pasta `dist/` (site estát
 - 38 lineups (smoke, flash e molotov) em Mirage, Dust2, Inferno, Nuke, Ancient, Anubis e Cache;
 - captura da posição, mira e resultado para cada lineup, com zoom por pinça no celular;
 - busca, filtros por mapa, granada e lado (TR/CT) e favoritos salvos no navegador;
-- link da fonte original em cada ficha.
+- link da fonte e do vídeo nas fichas do CS2Nades; capturas próprias sem link externo.
 
-As lineups foram pesquisadas no [CS2Nades](https://cs2nades.gg/); o crédito de cada captura aparece na ficha. Confira cada lançamento em uma partida de treino, pois atualizações do jogo podem alterar o resultado.
+O catálogo reúne capturas próprias e lineups pesquisadas no [CS2Nades](https://cs2nades.gg/); o crédito de cada captura aparece na ficha. Confira cada lançamento em uma partida de treino, pois atualizações do jogo podem alterar o resultado.
 
 ## Executar no computador
 
@@ -34,7 +34,7 @@ Abra `http://localhost:8000`. Se o comando `python` não estiver disponível, us
 - `dist/index.html`: página inicial;
 - `dist/styles.css`: estilos;
 - `dist/app.js`: busca, filtros, favoritos e cartões;
-- `dist/lineups.json`: conteúdo das fichas e links das fontes;
+- `dist/lineups.json`: conteúdo das fichas e links das fontes, quando disponíveis;
 - `dist/images/`: capturas;
 - `.openai/hosting.json`: configuração legada do Sites; não é o destino de publicação.
 
