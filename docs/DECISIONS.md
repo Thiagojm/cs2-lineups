@@ -18,7 +18,8 @@ Record only choices that guide future work. Prefer stable thematic contracts ove
 - Status: accepted
 - Contract:
   - Lineups live in `dist/lineups.json` as a flat array of objects (`map`, `grenade`, `side`, `area`, `from`, `to`, `title`, `throw`, `description`, `image` or `images`, optional `captureCredit`, `source`).
-  - `app.js` owns filtering, search (`pt-BR` lowercasing), rendering, favorites, and the capture lightbox; filter chip orders are hardcoded (`mapOrder`, `typeOrder`).
+  - `app.js` owns filtering, search (`pt-BR` lowercasing), rendering, favorites, and the capture lightbox; filter chip orders are hardcoded (`mapOrder`, `typeOrder`, `sideOrder`).
+  - Side filter chips are `TR` and `CT`; `selectedSide` defaults to `TR` and is page state only (not in `localStorage`). Cards match `item.side === selectedSide`. When CT is selected and the loaded catalog has no CT entries, the empty state explains that CT lineups have not been added yet; other zero-result combinations use the generic no-results message.
   - Smoke/Flash/Molotov chips always appear; HE appears only when catalog data includes HE.
   - Capture clicks open an in-page lightbox; entries with `images` show a labeled split capture. HTTP(S) source links remain `target="_blank"`.
   - Lightbox zoom uses mouse wheel (about 1×–4×, cursor-centered) and pointer drag to pan when zoomed; open/close resets transform. Focus trap and Esc/×/backdrop close stay unchanged.

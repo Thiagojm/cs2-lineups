@@ -1,8 +1,10 @@
 const mapOrder = ["Todos", "Mirage", "Dust2", "Inferno", "Nuke", "Ancient", "Anubis", "Cache"];
 const typeOrder = ["Todas", "Smoke", "Flash", "Molotov", "HE"];
+const sideOrder = ["TR", "CT"];
 let lineups = [];
 let selectedMap = "Todos";
 let selectedType = "Todas";
+let selectedSide = "TR";
 let favoritesOnly = false;
 let lightboxLastFocus = null;
 const ZOOM_MIN = 1;
@@ -41,6 +43,7 @@ function renderFilters() {
   $("#type-filters").innerHTML = typeOrder
     .filter((type) => type === "Todas" || type === "Smoke" || type === "Flash" || type === "Molotov" || lineups.some((item) => item.grenade === type))
     .map((type) => `<button class="chip" type="button" data-type="${esc(type)}" aria-pressed="${selectedType === type}">${esc(type)}</button>`).join("");
+  $("#side-filters").innerHTML = sideOrder.map((side) => `<button class="chip" type="button" data-side="${esc(side)}" aria-pressed="${selectedSide === side}">${esc(side)}</button>`).join("");
 }
 
 function setPageInert(active) {
@@ -110,6 +113,7 @@ function render() {
   const visible = lineups.filter((item) =>
     (selectedMap === "Todos" || item.map === selectedMap) &&
     (selectedType === "Todas" || item.grenade === selectedType) &&
+    item.side === selectedSide &&
     (!favoritesOnly || saved.has(item.source)) &&
     (!query || [item.map, item.grenade, item.title, item.from, item.to, item.area, item.description].some((part) => String(part).toLocaleLowerCase("pt-BR").includes(query)))
   );
@@ -134,7 +138,14 @@ function render() {
     </article>`;
   }).join("");
   $("#result-count").textContent = `${visible.length} ${visible.length === 1 ? "LINEUP" : "LINEUPS"}`;
-  $("#empty-state").hidden = visible.length > 0;
+  const empty = $("#empty-state");
+  empty.hidden = visible.length > 0;
+  if (visible.length === 0) {
+    const catalogHasCt = lineups.some((item) => item.side === "CT");
+    empty.textContent = selectedSide === "CT" && !catalogHasCt
+      ? "Ainda não há lineups de CT no catálogo."
+      : "Nenhuma lineup encontrada. Ajuste a busca ou os filtros.";
+  }
   $("#favorites-toggle").setAttribute("aria-pressed", String(favoritesOnly));
   $("#favorites-toggle").setAttribute("title", favoritesOnly ? "Mostrar todas" : "Mostrar favoritos");
 }
@@ -142,10 +153,12 @@ function render() {
 document.addEventListener("click", (event) => {
   const map = event.target.closest("[data-map]");
   const type = event.target.closest("[data-type]");
+  const side = event.target.closest("[data-side]");
   const save = event.target.closest("[data-save]");
   const shot = event.target.closest("[data-lightbox-images]");
   if (map) { selectedMap = map.dataset.map; renderFilters(); render(); }
   if (type) { selectedType = type.dataset.type; renderFilters(); render(); }
+  if (side) { selectedSide = side.dataset.side; renderFilters(); render(); }
   if (save) {
     const id = save.dataset.save;
     saved.has(id) ? saved.delete(id) : saved.add(id);
