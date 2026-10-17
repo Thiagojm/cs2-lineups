@@ -4,7 +4,9 @@
 
 - Shipped static Portuguese CS2 lineup guide with filters, search, favorites, lightbox wheel/pinch zoom and pan, side filter, and captures under `dist/`.
 - Published permanent site on here.now: https://deep-essence-hjmw.here.now/
-- Added `cs2-lineup-captures` skill and three-panel composer; Mirage local smokes/Flash Meio, Ancient smokes Janela meio V1/V2, and Dust2 Portas v1/v2, Domínio Fundo, Porta B, Meio B, plus Dust2 flashes Redomínio Fundo, Rush Fundo, Meio, Varanda, Domínio Varanda. Catalog now has 40 entries, including recent own Inferno captures: Lurk Apartamento and Moto v2 smokes, Xuxa and NIP Meio falso, and the updated Banana flash.
+- Added `cs2-lineup-captures` skill and three-panel composer; Mirage local smokes/Flash Meio, Ancient smokes Janela meio V1/V2, and Dust2 Portas v1/v2, Domínio Fundo, Porta B, Meio B, plus Dust2 flashes Redomínio Fundo, Rush Fundo, Meio, Varanda, Domínio Varanda. Catalog now has 47 entries, including recent own Inferno captures: Lurk Apartamento and Moto v2 smokes, Xuxa and NIP Meio falso, and the updated Banana flash.
+
+- Approved seven new Ancient cards: Long B, Donut A, CT A, Pilar B molotov, Entrada B/A flashes and Default A molotov. Donut A uses the user's zoomed aim screenshot with mixed attribution; Temple A was removed.
 
 ## In progress
 
@@ -18,5 +20,5 @@
 
 ## Backlog
 
-- Replace removed throws (Mirage Flash Short, Dust2 Flash Long, Nuke Heaven A smoke, Ancient B Long smoke, Anubis Flash Bomb A) and expand Flash/HE; HE chip stays hidden until HE entries exist.
+- Replace removed throws (Mirage Flash Short, Dust2 Flash Long, Nuke Heaven A smoke, Anubis Flash Bomb A) and expand Flash/HE; HE chip stays hidden until HE entries exist.
 - CT-side lineups.
